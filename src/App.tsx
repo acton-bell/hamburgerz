@@ -37,8 +37,10 @@ const Serving = ({ burger }: { burger: string }) => (
   </div>
 )
 
+const defaultBurger = "Hamburger"
+
 export const App = () => {
-  const [text, setText] = useState(getQueryParam("burger") ?? "Hamburger")
+  const [text, setText] = useState(getQueryParam("burger") ?? defaultBurger)
   const [burgers, setBurgers] = useState<string[]>([])
 
   useEffect(() => setQueryParam("burger", text), [text])
@@ -52,20 +54,24 @@ export const App = () => {
         onChange={(e) => setText(e.target.value)}
       />
       <Serving burger={text} />
-      <input
+      {/* <input
         type="button"
         onClick={() => {
           setBurgers((current) => current.concat(text))
           setText("Hamburger")
         }}
         value="Serve"
-      />
-      <div className="conveyor">
+      /> */}
+      {/* <div className="conveyor">
         {burgers.map((burger, i) => (
           <Serving key={i} burger={burger} />
         ))}
-      </div>
-      <input type="button" onClick={() => setBurgers([])} value="Clear" />
+      </div> */}
+      <input
+        type="button"
+        onClick={() => setText(defaultBurger)}
+        value="Reset"
+      />
     </div>
   )
 }
