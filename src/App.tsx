@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./App.css"
 
 const Burger = ({ text }: { text: string } = { text: "Hamburger" }) => (
@@ -15,9 +15,33 @@ const Burger = ({ text }: { text: string } = { text: "Hamburger" }) => (
   </div>
 )
 
-function App() {
-  const [text, setText] = useState("Hamburger")
+const getQueryParam = (key: string) =>
+  Object.fromEntries(new URLSearchParams(window.location.search).entries())[key]
+
+const setQueryParam = (key: string, value: string) => {
+  const searchParams = new URLSearchParams(window.location.search)
+  searchParams.set(key, value)
+  history.replaceState(
+    null,
+    "",
+    window.location.pathname + "?" + searchParams.toString()
+  )
+}
+
+const Serving = ({ burger }: { burger: string }) => (
+  <div className="serving">
+    <div className="plate">
+      <div className="inner" />
+    </div>
+    <Burger text={burger} />
+  </div>
+)
+
+export const App = () => {
+  const [text, setText] = useState(getQueryParam("burger") ?? "Hamburger")
   const [burgers, setBurgers] = useState<string[]>([])
+
+  useEffect(() => setQueryParam("burger", text), [text])
 
   return (
     <div className="App">
@@ -27,23 +51,21 @@ function App() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <Burger text={text} />
+      <Serving burger={text} />
       <input
         type="button"
         onClick={() => {
           setBurgers((current) => current.concat(text))
           setText("Hamburger")
         }}
-        value="New"
+        value="Serve"
       />
       <div className="conveyor">
         {burgers.map((burger, i) => (
-          <Burger key={i} text={burger} />
+          <Serving key={i} burger={burger} />
         ))}
       </div>
       <input type="button" onClick={() => setBurgers([])} value="Clear" />
     </div>
   )
 }
-
-export default App
