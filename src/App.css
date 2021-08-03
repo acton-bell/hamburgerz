@@ -1,0 +1,170 @@
+:root {
+  --bun: #eba44a;
+  --brown: #4d1c13;
+  --lettuce: #4ca673;
+  --onion: #b079aa;
+  --pickle: #94b140;
+  --tomato: #ea5b58;
+  --cheese: #fbe292;
+  --patty: #863330;
+  --mint: #00ff78;
+  --sesame: #f0ca9a;
+}
+
+.hamburgerInput {
+  text-align: center;
+  background: transparent;
+  border: none;
+  font-family: cursive;
+  font-size: 24px;
+  color: white;
+  background-color: #da291c;
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.hamburgerInput::first-letter {
+  color: #ffc72c;
+  font-size: 32px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  /* border: solid 4px blue; */
+  padding: 2px;
+  background-image: linear-gradient(
+    to top,
+    #fdcbf1 0%,
+    #fdcbf1 1%,
+    #e6dee9 100%
+  );
+  height: 100%;
+}
+
+.burger {
+  width: 100px;
+  /* border: solid 2px red; */
+  padding: 8px;
+  margin: 8px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0 0 0.75rem var(--brown));
+}
+
+.burger span {
+  display: block;
+  width: 50px;
+}
+
+/* Bun Top A */
+
+.burger span.h {
+  background-image: radial-gradient(var(--sesame) 1px, var(--bun) 0);
+  background-position: 0px 5px;
+  background-size: 3px 3px;
+  /* background: var(--bun); */
+  border-top: 2px solid var(--brown);
+  border-right: 2px solid var(--brown);
+  border-left: 2px solid var(--brown);
+  border-radius: 13px 13px 0px 0px;
+  height: 6px;
+}
+
+/* Bun Top B */
+
+.burger span.a {
+  background: var(--bun);
+  border-right: 2px solid var(--brown);
+  border-left: 2px solid var(--brown);
+  border-bottom: 2px solid var(--brown);
+  /* border-radius: 13px 13px 0px 0px; */
+  height: 6px;
+}
+
+/* Onions & Pickles */
+
+.burger span.m {
+  border-top: 3px solid var(--onion);
+  border-bottom: 3px solid var(--pickle);
+  width: 50px;
+  transform: skewX(0deg) scaleX(1);
+}
+
+/* Tomato */
+
+.burger span.b {
+  border-bottom: 6px dashed var(--tomato);
+  width: 37px;
+  transform: skewX(-20deg) scaleX(1.4);
+}
+
+/* Cheese */
+
+.burger span.u {
+  background: var(--cheese);
+  border-radius: 8px;
+  height: 6px;
+  width: 55px;
+}
+
+/* Cheese Droop */
+
+.burger span.u::after {
+  border: 15px solid transparent;
+  border-top-color: var(--cheese);
+  content: "";
+  display: block;
+  height: 0;
+  transform: scaleY(1);
+  width: 0;
+}
+
+/* Patty */
+
+.burger span.r {
+  background: var(--patty);
+  border: 2px solid var(--brown);
+  border-radius: 5px;
+  height: 10px;
+}
+
+/* Lettuce */
+
+.burger span.g {
+  background: var(--lettuce);
+  border-radius: 0px;
+  border: 1.5px dotted darkgreen;
+  width: 60px;
+  height: 3px;
+}
+
+/* Bun Bottom A */
+
+.burger span.e {
+  background: var(--bun);
+  border-right: 2px solid var(--brown);
+  border-left: 2px solid var(--brown);
+  border-top: 2px solid var(--brown);
+  /* border-radius: 13px 13px 0px 0px; */
+  height: 6px;
+}
+
+/* Bun Bottom B */
+
+.burger span.r:last-of-type {
+  background: var(--bun);
+  border-bottom: 2px solid var(--brown);
+  border-right: 2px solid var(--brown);
+  border-left: 2px solid var(--brown);
+  border-top: 0;
+  border-radius: 0px 0px 13px 13px;
+  height: 6px;
+}
+
+.burger span.big {
+  height: 12px;
+}
